@@ -31,16 +31,12 @@ object Proposition {
     val a = refineMV[Int, Or[Predicate[Int, Interval.Closed[3, 5]], Predicate[Int, Interval.Closed[103, 105]]]](4)
   }
 
-  object Approach2 {
-    import shapeless.~?>.idKeyWitness
-    import shapeless.~?>.idValueWitness
-    import shapeless.~?>.witness
-
-    inline given [T, A <: Refined[T, _], B <: Refined[T, _]]: Predicate[T, Or[A, B]] with
-      transparent inline def isValid(inline t: T): Boolean = true
-
-    val a = refineMV[Int, Or[Interval.Closed[3, 5], Interval.Closed[103, 105]]](4)
-  }
+//  object Approach2 {
+//    inline given [T, A <: Refined[T, _], B <: Refined[T, _]]: Predicate[T, Or[A, B]] with
+//      transparent inline def isValid(inline t: T): Boolean = true
+//
+//    val a = refineMV[Int, Or[Interval.Closed[3, 5], Interval.Closed[103, 105]]](4)
+//  }
 
   // approach 2:
 //  val aa = refineMV[Int, Or[Interval.Closed[3, 5], Interval.Closed[103, 105]]](4)
